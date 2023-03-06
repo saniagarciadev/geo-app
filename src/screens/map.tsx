@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {ScrollView} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 import {Text, View, SegmentedControl, Colors} from 'react-native-ui-lib';
 import {observer} from 'mobx-react';
 import {useNavigation} from '@react-navigation/native';
@@ -19,6 +19,8 @@ import {useAppearance} from '@app/utils/hooks';
 import {useStores} from '@app/stores';
 import {HeaderButton} from '@app/components/button';
 import {services} from '@app/services';
+
+import MapView from 'react-native-maps';
 
 export const Map: NavioScreen = observer(({}) => {
   useAppearance();
@@ -61,50 +63,20 @@ export const Map: NavioScreen = observer(({}) => {
 
   return (
     <View flex bg-bgColor>
-      <ScrollView contentInsetAdjustmentBehavior="always">
-        <Section title={'UI'}>
-          <View paddingV-s1>
-            <Row>
-              <View flex>
-                <Text textColor text60R>
-                  Appearance2
-                </Text>
-              </View>
-
-              <SegmentedControl
-                initialIndex={appearanceInitialIndex}
-                segments={appearanceSegments}
-                backgroundColor={Colors.bgColor}
-                activeColor={Colors.primary}
-                inactiveColor={Colors.textColor}
-                onChangeIndex={handleAppearanceIndexChange}
-              />
-            </Row>
-          </View>
-
-          <View paddingV-s1>
-            <Row>
-              <View flex>
-                <Text textColor text60R>
-                  Language
-                </Text>
-              </View>
-
-              <SegmentedControl
-                initialIndex={languageInitialIndex}
-                segments={languageSegments}
-                backgroundColor={Colors.bgColor}
-                activeColor={Colors.primary}
-                inactiveColor={Colors.textColor}
-                onChangeIndex={handleLanguageIndexChange}
-              />
-            </Row>
-          </View>
-        </Section>
-      </ScrollView>
+      <MapView style={styles.map} />
     </View>
   );
 });
 Map.options = () => ({
-  title: services.t.do('settings.title'),
+  title: services.t.do('map.title'),
+});
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  map: {
+    width: '100%',
+    height: '100%',
+  },
 });

@@ -1,4 +1,7 @@
 export const en = {
+  map: {
+    title: 'The Art Layer',
+  },
   home: {
     title: 'Home',
   },
