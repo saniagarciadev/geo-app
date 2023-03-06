@@ -20,7 +20,7 @@ import {useStores} from '@app/stores';
 import {HeaderButton} from '@app/components/button';
 import {services} from '@app/services';
 
-export const Settings: NavioScreen = observer(({}) => {
+export const Map: NavioScreen = observer(({}) => {
   useAppearance();
   const navigation = useNavigation();
   const {ui} = useStores();
@@ -67,7 +67,7 @@ export const Settings: NavioScreen = observer(({}) => {
             <Row>
               <View flex>
                 <Text textColor text60R>
-                  Appearance
+                  Appearance2
                 </Text>
               </View>
 
@@ -105,6 +105,6 @@ export const Settings: NavioScreen = observer(({}) => {
     </View>
   );
 });
-Settings.options = () => ({
+Map.options = () => ({
   title: services.t.do('settings.title'),
 });

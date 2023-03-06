@@ -1,5 +1,6 @@
 import {Navio} from 'rn-navio';
 
+import {Map} from '@app/screens/map';
 import {Main} from '@app/screens/main';
 import {Playground} from '@app/screens/playground';
 import {Settings} from '@app/screens/settings';
@@ -17,6 +18,7 @@ import {services} from '@app/services';
 // NAVIO
 export const navio = Navio.build({
   screens: {
+    Map,
     Main,
     Settings,
     Example,
@@ -34,6 +36,7 @@ export const navio = Navio.build({
     },
   },
   stacks: {
+    MapStack: ['Map'],
     MainStack: ['Main', 'Example'],
     ExampleStack: {
       screens: ['Example'],
@@ -54,6 +57,13 @@ export const navio = Navio.build({
   tabs: {
     AppTabs: {
       content: {
+        MapTab: {
+          stack: 'MapStack',
+          options: () => ({
+            title: 'Map',
+            tabBarIcon: getTabBarIcon('MainTab'),
+          }),
+        },
         MainTab: {
           stack: 'MainStack',
           options: () => ({
@@ -85,11 +95,14 @@ export const navio = Navio.build({
   drawers: {
     MainDrawer: {
       content: {
-        Main: {
-          stack: 'MainStack',
+        Map: {
+          stack: 'MapStack',
           options: {
             drawerType: 'front',
           },
+        },
+        Main: {
+          stack: 'MainStack',
         },
         Example: 'ExampleStack',
         Playground: ['Playground'],

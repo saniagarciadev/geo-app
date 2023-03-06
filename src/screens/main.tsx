@@ -47,7 +47,7 @@ export const Main: NavioScreen = observer(({}) => {
 
   // Start
   useEffect(() => {
-    configureUI();
+    // configureUI();
     getCounterValue();
 
     // setTimeout(() => {
@@ -57,17 +57,17 @@ export const Main: NavioScreen = observer(({}) => {
     // }, 3000);
   }, []);
 
-  // UI Methods
-  const configureUI = () => {
-    navigation.setOptions({
-      headerRight: () => (
-        <Row>
-          <HeaderButton onPress={handleCounterDec} label="Dec" />
-          <HeaderButton onPress={handleCounterInc} label="Inc" />
-        </Row>
-      ),
-    });
-  };
+  // UI Methods ARCHIVED
+  // const configureUI = () => {
+  //   navigation.setOptions({
+  //     headerRight: () => (
+  //       <Row>
+  //         <HeaderButton onPress={handleCounterDec} label="Dec" />
+  //         <HeaderButton onPress={handleCounterInc} label="Inc" />
+  //       </Row>
+  //     ),
+  //   });
+  // };
 
   return (
     <View flex bg-bgColor>
