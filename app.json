@@ -30,6 +30,6 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": ["expo-localization"]
+    "plugins": ["expo-localization", "@maplibre/maplibre-react-native"]
   }
 }

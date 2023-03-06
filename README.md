@@ -228,3 +228,7 @@ Feel free to open an issue for suggestions.
 ## License
 
 This project is [MIT licensed](/LICENSE.md)
+
+## Added libraries
+
+https://github.com/maplibre/maplibre-react-native
