@@ -5,6 +5,7 @@ import {Main} from '@app/screens/main';
 import {Playground} from '@app/screens/playground';
 import {Settings} from '@app/screens/settings';
 import {Example} from '@app/screens/_screen-sample';
+import {Spot} from '@app/screens/spot';
 
 import {useAppearance} from '@app/utils/hooks';
 import {
@@ -22,6 +23,7 @@ export const navio = Navio.build({
     Main,
     Settings,
     Example,
+    Spot,
     Playground: {
       component: Playground,
       options: () => ({
@@ -40,6 +42,14 @@ export const navio = Navio.build({
     MainStack: ['Main', 'Example'],
     ExampleStack: {
       screens: ['Example'],
+      navigatorProps: {
+        screenListeners: {
+          focus: () => {},
+        },
+      },
+    },
+    SpotStack: {
+      screens: ['Spot'],
       navigatorProps: {
         screenListeners: {
           focus: () => {},
@@ -91,6 +101,7 @@ export const navio = Navio.build({
   },
   modals: {
     ExampleModal: 'ExampleStack',
+    SpotModal: 'SpotStack',
   },
   drawers: {
     MainDrawer: {

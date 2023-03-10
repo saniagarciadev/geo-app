@@ -4,15 +4,47 @@ import {Text, View, SegmentedControl, Colors} from 'react-native-ui-lib';
 import {observer} from 'mobx-react';
 import {NavioScreen} from 'rn-navio';
 import {services} from '@app/services';
+import {useServices} from '../services';
 
-import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
+import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
+import {useStores} from '@app/stores';
 
-// const PlaceholderSpots = {};
-
+const exampleSpot = {
+  title: 'Hi2',
+  coordinate: {
+    latitude: 37.78825,
+    longitude: -122.4324,
+  },
+};
 export const Map: NavioScreen = observer(({}) => {
+  const [spots, setSpots] = useState([exampleSpot]);
+  const {t, navio} = useServices();
+  // const [selectedSpot, setSelectedSpot] = useState(exampleSpot);
+  const {spot, ui} = useStores();
+
+  // Methods
+  const handleSelectMarker = (marker: {
+    title: string;
+    coordinate: {latitude: number; longitude: number};
+  }) => spot.set('value', marker);
+
+  const modalsShow = () => navio.modals.show('SpotModal');
+
   return (
     <View flex bg-bgColor>
-      <MapView provider={PROVIDER_GOOGLE} style={styles.map} customMapStyle={mapStyle} />
+      <MapView provider={PROVIDER_GOOGLE} style={styles.map} customMapStyle={mapStyle}>
+        {spots.map((marker: typeof exampleSpot, i: number) => (
+          <Marker
+            // image={flagPinkImg}
+            key={i}
+            coordinate={marker.coordinate}
+            onPress={() => {
+              handleSelectMarker(marker);
+              modalsShow();
+            }}
+          />
+        ))}
+      </MapView>
     </View>
   );
 });

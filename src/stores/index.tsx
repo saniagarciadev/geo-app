@@ -3,10 +3,12 @@ import React from 'react';
 import './_hydration';
 import {UIStore} from './ui';
 import {CounterStore} from './counter';
+import {SpotStore} from './spot';
 
 class Stores {
   ui = new UIStore();
   counter = new CounterStore();
+  spot = new SpotStore();
 }
 export const stores = new Stores();
 
