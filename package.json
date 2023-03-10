@@ -5,7 +5,7 @@
   "author": "Sania García <sania@softer.systems> (https://github.com/cyberkwin)",
   "homepage": "https://github.com/cyberkwin/geo-app",
   "scripts": {
-    "start": "npx expo start",
+    "start": "expo start --dev-client",
     "start:dc": "npx expo start --dev-client",
     "start:prod": "npx expo start --no-dev --minify",
     "start:android": "npx expo start --android",
