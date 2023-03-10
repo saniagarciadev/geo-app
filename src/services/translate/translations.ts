@@ -1,6 +1,6 @@
 export const en = {
   map: {
-    title: 'The Art Layer',
+    title: 'Geo',
   },
   home: {
     title: 'Home',

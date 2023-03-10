@@ -20,7 +20,10 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "io.batyr.expo-starter"
+      "bundleIdentifier": "io.batyr.expo-starter",
+      "config": {
+        "googleMapsApiKey": "AIzaSyCSIKWRIqEmG2aQY5UTR5AaJlDI3uKqqEg"
+      }
     },
     "android": {
       "adaptiveIcon": {
