@@ -136,8 +136,9 @@ export const getHeaderBlurEffect = (): 'regular' | 'light' | 'dark' => {
 
 // Default options
 export const screenDefaultOptions = (): NativeStackNavigationOptions => ({
-  headerShadowVisible: false,
-  headerTintColor: Colors.primary,
+  headerShown: false,
+  // headerShadowVisible: false,
+  // headerTintColor: Colors.primary,
 
   // this setup makes large title work on iOS
   ...Platform.select({

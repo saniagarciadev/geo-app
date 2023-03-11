@@ -12,8 +12,8 @@ import {useStores} from '@app/stores';
 const exampleSpot = {
   title: 'Hi2',
   coordinate: {
-    latitude: 37.78825,
-    longitude: -122.4324,
+    latitude: 48.868505,
+    longitude: 2.352202,
   },
 };
 export const Map: NavioScreen = observer(({}) => {
@@ -36,6 +36,7 @@ export const Map: NavioScreen = observer(({}) => {
         {spots.map((marker: typeof exampleSpot, i: number) => (
           <Marker
             // image={flagPinkImg}
+            pinColor={'aqua'}
             key={i}
             coordinate={marker.coordinate}
             onPress={() => {
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
   },
   map: {
     width: '100%',
-    height: '100%',
+    height: '110%',
   },
 });
 
