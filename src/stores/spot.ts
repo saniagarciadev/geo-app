@@ -1,16 +1,8 @@
 import {makeAutoObservable} from 'mobx';
 import {hydrateStore, makePersistable} from 'mobx-persist-store';
 
-const exampleSpot = {
-  title: 'placeholder2',
-  coordinate: {
-    latitude: 37.78825,
-    longitude: -122.4324,
-  },
-};
-
 export class SpotStore implements IStore {
-  value = exampleSpot;
+  value = {};
 
   constructor() {
     makeAutoObservable(this);

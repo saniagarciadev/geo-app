@@ -5,42 +5,63 @@ import {observer} from 'mobx-react';
 import {NavioScreen} from 'rn-navio';
 import {services} from '@app/services';
 import {useServices} from '../services';
+import {mapStyle} from '../utils/mapStyle';
 
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 import {useStores} from '@app/stores';
 
 const exampleSpot = {
-  title: 'Hi2',
+  title: 'My spot',
   coordinate: {
     latitude: 48.868505,
     longitude: 2.352202,
   },
+  description: 'Description',
+  source: 'local-storage',
 };
 export const Map: NavioScreen = observer(({}) => {
   const [spots, setSpots] = useState([exampleSpot]);
   const {t, navio} = useServices();
-  // const [selectedSpot, setSelectedSpot] = useState(exampleSpot);
   const {spot, ui} = useStores();
 
   // Methods
   const handleSelectMarker = (marker: {
+    coordinate: any;
+    source: string;
     title: string;
-    coordinate: {latitude: number; longitude: number};
+    description: string;
   }) => spot.set('value', marker);
 
   const modalsShow = () => navio.modals.show('SpotModal');
 
   return (
     <View flex bg-bgColor>
-      <MapView provider={PROVIDER_GOOGLE} style={styles.map} customMapStyle={mapStyle}>
-        {spots.map((marker: typeof exampleSpot, i: number) => (
+      <MapView
+        provider={PROVIDER_GOOGLE}
+        style={styles.map}
+        customMapStyle={mapStyle}
+        showsUserLocation={true}
+        showsMyLocationButton
+        onPress={e => {
+          // const newSpotsArray = [...spots, {...exampleSpot, coordinate: e.nativeEvent.coordinate}];
+          // setSpots(newSpotsArray);
+          if (e.nativeEvent.action === 'marker-press') return;
+          handleSelectMarker({
+            ...exampleSpot,
+            coordinate: e.nativeEvent.coordinate,
+            source: 'temp',
+          });
+          modalsShow();
+        }}
+      >
+        {spots.map((spot: typeof exampleSpot, i: number) => (
           <Marker
             // image={flagPinkImg}
             pinColor={'aqua'}
             key={i}
-            coordinate={marker.coordinate}
+            coordinate={spot.coordinate}
             onPress={() => {
-              handleSelectMarker(marker);
+              handleSelectMarker(spot);
               modalsShow();
             }}
           />
@@ -62,278 +83,3 @@ const styles = StyleSheet.create({
     height: '110%',
   },
 });
-
-const mapStyle = [
-  {
-    elementType: 'geometry',
-    stylers: [
-      {
-        color: '#212121',
-      },
-    ],
-  },
-  {
-    elementType: 'labels.icon',
-    stylers: [
-      {
-        visibility: 'off',
-      },
-    ],
-  },
-  {
-    elementType: 'labels.text.fill',
-    stylers: [
-      {
-        color: '#757575',
-      },
-    ],
-  },
-  {
-    elementType: 'labels.text.stroke',
-    stylers: [
-      {
-        color: '#212121',
-      },
-    ],
-  },
-  {
-    featureType: 'administrative',
-    stylers: [
-      {
-        visibility: 'off',
-      },
-    ],
-  },
-  {
-    featureType: 'administrative',
-    elementType: 'geometry',
-    stylers: [
-      {
-        color: '#757575',
-      },
-    ],
-  },
-  {
-    featureType: 'administrative.country',
-    elementType: 'labels.text.fill',
-    stylers: [
-      {
-        color: '#9e9e9e',
-      },
-    ],
-  },
-  {
-    featureType: 'administrative.land_parcel',
-    stylers: [
-      {
-        visibility: 'off',
-      },
-    ],
-  },
-  {
-    featureType: 'administrative.locality',
-    elementType: 'labels.text.fill',
-    stylers: [
-      {
-        color: '#bdbdbd',
-      },
-    ],
-  },
-  {
-    featureType: 'landscape',
-    elementType: 'geometry.fill',
-    stylers: [
-      {
-        color: '#000000',
-      },
-    ],
-  },
-  {
-    featureType: 'poi',
-    stylers: [
-      {
-        visibility: 'off',
-      },
-    ],
-  },
-  {
-    featureType: 'poi',
-    elementType: 'labels.text.fill',
-    stylers: [
-      {
-        color: '#757575',
-      },
-    ],
-  },
-  {
-    featureType: 'poi.park',
-    elementType: 'geometry',
-    stylers: [
-      {
-        color: '#181818',
-      },
-    ],
-  },
-  {
-    featureType: 'poi.park',
-    elementType: 'labels.text.fill',
-    stylers: [
-      {
-        color: '#616161',
-      },
-    ],
-  },
-  {
-    featureType: 'poi.park',
-    elementType: 'labels.text.stroke',
-    stylers: [
-      {
-        color: '#1b1b1b',
-      },
-    ],
-  },
-  {
-    featureType: 'road',
-    elementType: 'geometry.fill',
-    stylers: [
-      {
-        color: '#2c2c2c',
-      },
-    ],
-  },
-  {
-    featureType: 'road',
-    elementType: 'labels',
-    stylers: [
-      {
-        visibility: 'off',
-      },
-    ],
-  },
-  {
-    featureType: 'road',
-    elementType: 'labels.text.fill',
-    stylers: [
-      {
-        color: '#8a8a8a',
-      },
-    ],
-  },
-  {
-    featureType: 'road.arterial',
-    elementType: 'geometry',
-    stylers: [
-      {
-        color: '#373737',
-      },
-    ],
-  },
-  {
-    featureType: 'road.arterial',
-    elementType: 'geometry.fill',
-    stylers: [
-      {
-        color: '#cfcfcf',
-      },
-    ],
-  },
-  {
-    featureType: 'road.highway',
-    elementType: 'geometry',
-    stylers: [
-      {
-        color: '#3c3c3c',
-      },
-    ],
-  },
-  {
-    featureType: 'road.highway',
-    elementType: 'geometry.fill',
-    stylers: [
-      {
-        color: '#e3e3e3',
-      },
-    ],
-  },
-  {
-    featureType: 'road.highway.controlled_access',
-    elementType: 'geometry',
-    stylers: [
-      {
-        color: '#4e4e4e',
-      },
-    ],
-  },
-  {
-    featureType: 'road.highway.controlled_access',
-    elementType: 'geometry.fill',
-    stylers: [
-      {
-        color: '#e3e3e3',
-      },
-    ],
-  },
-  {
-    featureType: 'road.local',
-    elementType: 'geometry.fill',
-    stylers: [
-      {
-        color: '#8f8f8f',
-      },
-    ],
-  },
-  {
-    featureType: 'road.local',
-    elementType: 'labels.text.fill',
-    stylers: [
-      {
-        color: '#616161',
-      },
-    ],
-  },
-  {
-    featureType: 'transit',
-    elementType: 'labels.text.fill',
-    stylers: [
-      {
-        color: '#757575',
-      },
-    ],
-  },
-  {
-    featureType: 'water',
-    elementType: 'geometry',
-    stylers: [
-      {
-        color: '#000000',
-      },
-    ],
-  },
-  {
-    featureType: 'water',
-    elementType: 'geometry.fill',
-    stylers: [
-      {
-        color: '#404040',
-      },
-    ],
-  },
-  {
-    featureType: 'water',
-    elementType: 'labels',
-    stylers: [
-      {
-        visibility: 'off',
-      },
-    ],
-  },
-  {
-    featureType: 'water',
-    elementType: 'labels.text.fill',
-    stylers: [
-      {
-        color: '#3d3d3d',
-      },
-    ],
-  },
-];
