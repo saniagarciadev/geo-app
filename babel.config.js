@@ -1,7 +1,10 @@
 module.exports = function (api) {
   api.cache(true);
   return {
-    presets: ['babel-preset-expo'],
+    presets: [
+      ['babel-preset-expo'],
+      ['module:metro-react-native-babel-preset', {unstable_transformProfile: 'hermes-stable'}],
+    ],
     plugins: [
       // fix for web caused by react-native-reanimated
       // https://github.com/software-mansion/react-native-reanimated/issues/1823#issuecomment-1384307084
