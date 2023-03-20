@@ -35,10 +35,7 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": [
-      "expo-localization",
-      "@maplibre/maplibre-react-native"
-    ],
+    "plugins": ["expo-localization"],
     "extra": {
       "eas": {
         "projectId": "6b392481-8259-4c60-8780-e79c22e4feb9"

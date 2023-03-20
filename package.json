@@ -5,7 +5,7 @@
   "author": "Sania García <sania@softer.systems> (https://github.com/cyberkwin)",
   "homepage": "https://github.com/cyberkwin/geo-app",
   "scripts": {
-    "start": "expo start --dev-client",
+    "start": "npx expo start",
     "start:dc": "npx expo start --dev-client",
     "start:prod": "npx expo start --no-dev --minify",
     "start:android": "npx expo start --android",
@@ -29,7 +29,6 @@
   },
   "dependencies": {
     "@kanzitelli/if-component": "^0.3.0",
-    "@maplibre/maplibre-react-native": "^9.0.0",
     "@react-native-async-storage/async-storage": "1.17.11",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-picker/picker": "2.4.8",
