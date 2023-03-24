@@ -1,3 +1,5 @@
+import 'react-native-get-random-values';
+import 'react-native-url-polyfill/auto';
 import 'expo-dev-client';
 import React, {useCallback, useEffect, useState} from 'react';
 import {LogBox} from 'react-native';

@@ -15,14 +15,14 @@ export const Spot: NavioScreen<Props> = observer(() => {
   useAppearance(); // for Dark Mode
   const navigation = useNavigation();
   const {t, navio} = useServices();
-  const {spot, ui} = useStores();
+  // const {spot, ui} = useStores();
 
   return (
     <View flex bg-bgColor>
       <ScrollView contentInsetAdjustmentBehavior="always">
-        <Text style={styles.title}>{spot.value.title}</Text>
+        {/* <Text style={styles.title}>{spot.value.title}</Text> */}
         <View style={styles.container}>
-          <MapView
+          {/* <MapView
             provider={PROVIDER_GOOGLE}
             style={styles.map}
             customMapStyle={mapStyle}
@@ -45,9 +45,9 @@ export const Spot: NavioScreen<Props> = observer(() => {
                 }}
               />
             )}
-          </MapView>
+          </MapView> */}
         </View>
-        <Text style={styles.baseText}>{spot.value.description}</Text>
+        {/* <Text style={styles.baseText}>{spot.value.description}</Text>
         <Text style={styles.baseText}>{'Source: ' + spot.value.source}</Text>
         {spot.value.source === 'temp' && (
           <Button
@@ -57,7 +57,7 @@ export const Spot: NavioScreen<Props> = observer(() => {
             }}
             color="aqua"
           />
-        )}
+        )} */}
       </ScrollView>
     </View>
   );

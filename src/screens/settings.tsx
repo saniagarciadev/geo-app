@@ -18,11 +18,21 @@ export const Settings: NavioScreen = observer(({}) => {
   };
 
   const [version, setVersion] = useState<any>('');
+  // useEffect(() => {
+  //   const conn = new Connection(clusterApiUrl('devnet'));
+  //   conn.getVersion().then(r => {
+  //     setVersion(r);
+  //   });
+  // }, []);
+
+  // Initiliaze the Social Protocol.
   useEffect(() => {
-    const conn = new Connection(clusterApiUrl('devnet'));
-    conn.getVersion().then(r => {
-      setVersion(r);
-    });
+    const runCode = async () => {
+      const keyPair = Keypair.generate();
+      // const socialProtocol = await new SocialProtocol(keyPair, null, { useIndexer: true } as ProtocolOptions).init()
+      // setSocialPorotcol(socialProtocol)
+    };
+    runCode();
   }, []);
 
   return (
