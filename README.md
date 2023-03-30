@@ -1,15 +1,5 @@
-## Geo
+## The Art Layer
 
-![alt text](./assets/maps-evolved.png)
+![alt text](./assets/Mobile%20UI%202.png)
 
-Geo is an endlessly customizable and social maps app.
-
-Your data lives in open protocols only, so whenever you want you can take your connections and history elsewhere.
-
-Using Geo should feel familiar but also dynamic, alive and sometimes surprising.
-
-Early in development.
-
-Closed alpha on Android coming 31 March.
-
-Follow on Twitter to stay up to date and get early access: https://twitter.com/mapsyourway
+The Art Layer is a map by Geo that lets you find and interact with NFT art IRL.
