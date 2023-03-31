@@ -10,6 +10,4 @@ Using Geo should feel familiar but also dynamic, alive and sometimes surprising.
 
 Early in development.
 
-Closed alpha on Android coming 31 March.
-
 Follow on Twitter to stay up to date and get early access: https://twitter.com/mapsyourway
